@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A clean, minimal To-Do List app — add tasks, mark them done, filter by status, and persist everything in your browser." />
+  <title>To‑Do List — NexSoft Solutions</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Inline shake keyframe (used by JS) -->
+  <style>
+    @keyframes shake {
+      10%, 90%  { transform: translateX(-2px); }
+      20%, 80%  { transform: translateX( 4px); }
+      30%, 50%, 70% { transform: translateX(-5px); }
+      40%, 60%  { transform: translateX( 5px); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-wrapper">
+
+    <!-- ── Header ──────────────────────────────────────────────── -->
+    <header class="app-header">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 11l3 3L22 4"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+      </div>
+      <h1>My To‑Do List</h1>
+      <p>Stay organised, one task at a time.</p>
+    </header>
+
+    <!-- ── Input Card ───────────────────────────────────────────── -->
+    <section class="input-card" aria-label="Add new task">
+      <div class="input-row">
+        <input
+          type="text"
+          id="task-input"
+          placeholder="What needs to be done?"
+          maxlength="200"
+          autocomplete="off"
+          aria-label="New task input"
+        />
+        <button id="add-btn" aria-label="Add task">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5"  y1="12" x2="19" y2="12"/>
+          </svg>
+          Add
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Stats Bar ─────────────────────────────────────────────── -->
+    <div class="stats-bar" role="status" aria-live="polite" aria-label="Task statistics">
+      <div class="stat-chip">
+        <div class="stat-value" id="stat-total">0</div>
+        <div class="stat-label">Total</div>
+      </div>
+      <div class="stat-chip">
+        <div class="stat-value" id="stat-active">0</div>
+        <div class="stat-label">Active</div>
+      </div>
+      <div class="stat-chip">
+        <div class="stat-value" id="stat-done">0</div>
+        <div class="stat-label">Done</div>
+      </div>
+    </div>
+
+    <!-- ── Filter Bar ─────────────────────────────────────────────── -->
+    <nav class="filter-bar" aria-label="Filter tasks">
+      <button class="filter-btn active" data-filter="all"       aria-pressed="true">All</button>
+      <button class="filter-btn"        data-filter="active"    aria-pressed="false">Active</button>
+      <button class="filter-btn"        data-filter="completed" aria-pressed="false">Completed</button>
+    </nav>
+
+    <!-- ── Task List ─────────────────────────────────────────────── -->
+    <main class="task-list-container" aria-label="Task list">
+      <ul id="task-list" role="list" aria-label="Tasks">
+        <!-- Tasks rendered by script.js -->
+      </ul>
+
+      <!-- Footer -->
+      <footer class="list-footer" aria-label="Task actions">
+        <span class="items-left" id="items-left-label">0 items left</span>
+        <button id="clear-completed-btn" aria-label="Clear all completed tasks" disabled>
+          Clear Completed
+        </button>
+      </footer>
+    </main>
+
+  </div><!-- /.app-wrapper -->
+
+  <script src="script.js"></script>
+</body>
+</html>
